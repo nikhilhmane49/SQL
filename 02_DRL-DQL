@@ -1,0 +1,106 @@
+ 1. Create and Select Database
+
+-- Create the database
+CREATE DATABASE worker;
+
+-- Use the selected database
+USE worker;
+🧱 2. Create Table
+
+-- Create the person table
+CREATE TABLE person(
+    Id INT PRIMARY KEY,
+    Nam VARCHAR(40),
+    Dept VARCHAR(10),
+    Salary INT
+);
+📝 3. Insert Data
+
+-- Insert sample records
+INSERT INTO person(Id, Nam, Dept, Salary)
+VALUES 
+(2, 'nikhil', 'IT', 2000),
+(3, 'nishant', 'IT', 3000),
+(1, 'vedant', 'IT', 5000),
+(4, 'prasad', 'DS', 1000),
+(5, 'Ram', 'DS', 1000),
+(6, 'sam', 'NULL', 2000); -- Note: This is a string 'NULL', not real NULL
+🧹 4. Truncate Table (Optional)
+
+-- Remove all data but keep table structure
+TRUNCATE TABLE person;
+🔍 5. Basic SELECT Queries
+
+-- Show all columns and records
+SELECT * FROM person;
+
+-- Show only Name and Department
+SELECT Nam, Dept FROM person;
+🎯 6. Filtering with WHERE Clause
+
+-- Records with Salary > 2500
+SELECT * FROM person WHERE Salary > 2500;
+
+-- Employees from IT department
+SELECT * FROM person WHERE Dept = 'IT';
+
+-- Match multiple conditions
+SELECT * FROM person WHERE Nam = 'nikhil' AND Salary = '2000';
+
+-- Match any one condition
+SELECT * FROM person WHERE Nam = 'nishant' OR Dept = 'IT';
+🔢 7. Special Filtering
+
+-- Salary in a range
+SELECT * FROM person WHERE Salary BETWEEN 2500 AND 5500;
+
+-- Name matches multiple values
+SELECT * FROM person WHERE Nam IN ('nikhil', 'nishant');
+
+-- Pattern matching
+SELECT * FROM person WHERE Nam LIKE 'ni%';   -- Starts with 'ni'
+SELECT * FROM person WHERE Nam LIKE '%il';   -- Ends with 'il'
+
+-- Exclude a department
+SELECT * FROM person WHERE NOT Dept = 'IT';
+❓ 8. NULL Handling
+
+-- Records where Dept is NOT NULL
+SELECT * FROM person WHERE Dept IS NOT NULL;
+
+-- Records where Dept is NULL
+SELECT * FROM person WHERE Dept IS NULL;
+⏳ 9. Limit Result
+
+-- Show only first 2 rows
+SELECT * FROM person LIMIT 2;
+📊 10. Order By Clause
+
+-- Sort by Id (ascending)
+SELECT * FROM person ORDER BY Id;
+
+-- Sort by Salary (ascending)
+SELECT * FROM person ORDER BY Salary;
+
+-- Sort by Id (descending)
+SELECT * FROM person ORDER BY Id DESC;
+
+-- Sort by Salary (descending)
+SELECT * FROM person ORDER BY Salary DESC;
+🧮 11. Aggregate Functions with GROUP BY
+
+-- Count how many employees per department
+SELECT Dept, COUNT(*) FROM person GROUP BY Dept;
+
+-- Total salary per department
+SELECT Dept, SUM(Salary) FROM person GROUP BY Dept;
+
+-- Average salary per department
+SELECT Dept, AVG(Salary) AS avg_salary FROM person GROUP BY Dept;
+🧠 12. HAVING Clause – Filtering Groups
+
+-- Only departments where total salary > 3000
+SELECT Dept, SUM(Salary) FROM person GROUP BY Dept HAVING SUM(Salary) > 3000;
+
+-- Only departments where total salary < 3000
+SELECT Dept, SUM(Salary) FROM person GROUP BY Dept HAVING SUM(Salary) < 3000;
