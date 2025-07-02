@@ -83,4 +83,3 @@ SHOW COLUMNS FROM students;
 SHOW COLUMNS FROM Learners;
 Displays the column structure of the specified table.
 
-✅ Summary
