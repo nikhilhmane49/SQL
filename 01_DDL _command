@@ -3,14 +3,12 @@ This project demonstrates the use of DDL (Data Definition Language) commands in 
 
 🔹 1. CREATE Commands
 🏁 Create a Database
-sql
-Copy code
+
 CREATE DATABASE school;
 Creates a new database named school.
 
 🧾 Create a Table
-sql
-Copy code
+
 CREATE TABLE students(
 	Id INT PRIMARY KEY,
     Name VARCHAR(100),
@@ -20,65 +18,55 @@ CREATE TABLE students(
 Creates a table students with columns for student ID, name, age, and grade.
 
 🔹 2. USE Command
-sql
-Copy code
+
 USE school;
 Selects the school database for all upcoming queries.
 
 🔹 3. ALTER Table Commands
 ➕ Add a New Column
-sql
-Copy code
+
 ALTER TABLE students ADD Email VARCHAR(100);
 Adds a new column Email to the students table.
 
 🔁 Modify a Column Type
-sql
-Copy code
+
 ALTER TABLE students MODIFY Age TINYINT;
 Changes the data type of the Age column from INT to TINYINT.
 
 ❌ Drop a Column
-sql
-Copy code
+
 ALTER TABLE students DROP COLUMN Email;
 Removes the Email column from the students table.
 
 🔁 Rename Table
-sql
-Copy code
+
 ALTER TABLE Students RENAME TO Learners;
 Renames the table Students to Learners.
 
 🔹 4. DROP Commands
 ❌ Drop Table
-sql
-Copy code
+
 DROP TABLE students;
 Deletes the students table completely.
 
 ❌ Drop Database
-sql
-Copy code
+
 DROP DATABASE school;
 Deletes the entire school database along with all its tables and data.
 
 🔹 5. TRUNCATE Command
-sql
-Copy code
+
 TRUNCATE TABLE students;
 Removes all rows from the students table but keeps its structure.
 
 🔹 6. RENAME Command
-sql
-Copy code
+
 RENAME TABLE students TO Learners;
 Renames the table from students to Learners.
 
 🔹 7. SHOW / DESCRIBE Commands
 📊 Show Table Columns
-sql
-Copy code
+
 SHOW COLUMNS FROM students;
 SHOW COLUMNS FROM Learners;
 Displays the column structure of the specified table.
