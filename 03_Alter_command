@@ -1,0 +1,45 @@
+-- Create a new database named 'user'
+CREATE DATABASE user;
+
+-- Select the 'user' database
+USE user;
+
+-- Create a table named 'student'
+CREATE TABLE student(
+    Id INT PRIMARY KEY,                      -- Unique ID for each student
+    cname VARCHAR(10),                       -- Student name (max 10 chars)
+    gmail VARCHAR(20) UNIQUE,                -- Unique email
+    phone INT UNIQUE                         -- Unique phone number
+);
+
+-- Insert student records into the 'student' table
+INSERT INTO student(id, cname, gmail, phone)
+VALUES 
+    (1, 'nikhil', 'nikhilh@gmail.com', 457895),
+    (2, 'nishant', 'nishatl@gmail.com', 852545),
+    (3, 'ram', 'ram@gmail.com', 785245),
+    (4, 'sam', 'samert@gmail.com', 481245);
+
+-- Add a new column 'age' to the student table
+ALTER TABLE student ADD age INT;
+
+-- Rename the column 'age' to 'my_age'
+ALTER TABLE student RENAME COLUMN age TO my_age;
+
+-- Modify the 'my_age' column to FLOAT with a default of NULL
+ALTER TABLE student MODIFY COLUMN my_age FLOAT DEFAULT NULL;
+
+-- Rename the table from 'student' to 'user_student'
+RENAME TABLE student TO user_student;
+
+-- Rename the column 'phone' to 'my_phone' and change its type to FLOAT with default NULL
+ALTER TABLE user_student CHANGE COLUMN phone my_phone FLOAT DEFAULT NULL;
+
+-- Delete (drop) the 'my_phone' column from 'user_student'
+ALTER TABLE user_student DROP COLUMN my_phone;
+
+-- Try to select all data from the old 'student' table (will give an error if not recreated)
+-- SELECT * FROM student; -- Uncomment this line if you want to test error or re-create the table
+
+-- Show the structure of the modified table
+DESC user_student;
