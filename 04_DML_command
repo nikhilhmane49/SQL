@@ -1,0 +1,107 @@
+CREATE DATABASE users;
+
+USE users;
+
+CREATE TABLE worker(
+	id INT PRIMARY KEY,
+    cname VARCHAR(10),
+    Dept VARCHAR(20),
+    work_id VARCHAR(10) UNIQUE
+    );
+    
+CREATE TABLE orders(
+	id INT PRIMARY KEY,
+    pay INT,
+    worker_id INT,
+    FOREIGN KEY(worker_id) references worker(id) ON DELETE CASCADE
+    );
+    
+    
+CREATE TABLE Dept(
+	id INT PRIMARY KEY,
+    payment INT,
+    Dept_id INT,
+    FOREIGN KEY(Dept_id) references worker(id) ON DELETE SET NULL
+    );
+    
+    
+    
+-- Insert commande
+
+
+-- Method-I  Insert Multiple
+INSERT INTO worker(id,cname,Dept,work_id)
+VALUES(1,'nik','IT',321),
+(2,'nish','DS',458),
+(3,'ram','COMP',451),
+(4,'sam','IT',789),
+(5,'kam','Civil',456);
+
+
+-- Method-II
+INSERT INTO worker VALUES(6,'gau','IT',587);
+
+-- Method-III
+INSERT INTO worker(id,cname)
+VALUES(7,'kub');
+
+-- insert in order table 
+INSERT INTO orders(id,pay,worker_id)
+VALUES(1,234,6);
+
+-- insert in order table 
+INSERT INTO orders(id,pay,worker_id)
+VALUES(2,834,5);
+
+-- insert in Dept table
+INSERT INTO Dept(id,payment,Dept_id)
+VALUES(1,452,6);
+
+-- update
+UPDATE worker SET cname='gaurii' WHERE id=6;
+
+-- update  multiple rows
+SET SQL_SAFE_UPDATES=0;
+UPDATE worker SET Dept='IT';
+SET SQL_SAFE_UPDATES=1;
+
+-- Delete
+
+-- Delete whole table
+SET SQL_SAFE_UPDATES=0;
+DELETE FROM worker; 
+SET SQL_SAFE_UPDATES=1;
+
+-- Delete the row depending upon condition
+DELETE FROM worker where id=7;
+
+-- Delete ON DELETE CASCAD
+DELETE FROM worker WHERE id=5;
+
+-- Delete ON DELETE SET NULL
+DELETE FROM worker WHERE id=6;
+
+
+-- Replace using value when value exist(if it exsit it get update) 
+REPLACE INTO worker(id,cname,Dept) VALUES(1,'nikhil','DS');
+
+-- Replace using value when value does't exist (if not exist insert the value)
+REPLACE INTO worker(id,cname,Dept) VALUES(10,'hert','AIML');
+
+-- Replace using SET when value exist(if it exsit it get update)
+REPLACE INTO worker SET id=4 , cname='hello';
+
+-- Replace using SET when value not exist(if it not exist then it will insert value)
+REPLACE INTO worker SET id=12,cname='juu';
+
+
+SELECT * FROM worker;
+SELECT * FROM orders;
+SELECT * FROM Dept;
+
+DESC worker;
+
+DROP TABLE worker;
+
+DROP TABLE orders;
+
