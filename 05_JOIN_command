@@ -1,0 +1,64 @@
+CREATE DATABASE employee;
+
+USE employee;
+
+CREATE TABLE Dept_IT(
+	id INT PRIMARY KEY,
+    CnameIT VARCHAR(20),
+    Exp VARCHAR(20)
+    );
+    
+CREATE TABLE Dept_CS(
+	id INT PRIMARY KEY,
+    cnameCS VARCHAR(20),
+    age INT,
+    DeptCS_id INT UNIQUE
+    );
+    
+    
+    INSERT INTO Dept_IT(id,cnameIT,Exp)
+    VALUES(1,'NIKHIL','2yrs'),
+    (2,'NISHANT','1yrs'),
+    (3,'PRASAD','4yrs'),
+    (4,'VEDANT','5yrs'),
+    (5,'TANMMY','3yrs'),
+    (6,'PM','2yrs');
+    
+    INSERT INTO Dept_CS(id,cnameCS,age,DeptCS_id)
+    VALUES(1,'RAM',22,6),
+    (2,'DFR',22,3),
+    (4,'FGT',22,2),
+    (6,'DFG',22,4),
+    (5,'FGG',22,1),
+    (7, 'UNMATCHED', 25, 99);  
+    
+
+
+    
+    
+    
+    -- INNER JOIN
+    
+    SELECT Dept_IT.id,Dept_CS.DeptCS_id FROM Dept_IT INNER JOIN Dept_CS ON Dept_IT.id=Dept_CS.DeptCS_id;
+    
+    
+    -- OUTER JOIN
+     -- LEFT OUTER JOIN 
+     
+     SELECT Dept_IT.id,Dept_CS.DeptCS_id FROM Dept_IT LEFT JOIN Dept_CS ON Dept_IT.id=Dept_CS.DeptCS_id;
+     
+     -- RIGTH OUTER JOIN
+     
+     SELECT Dept_IT.id,Dept_CS.DeptCS_id FROM Dept_IT RIGHT JOIN Dept_CS ON Dept_IT.id=Dept_CS.DeptCS_id;
+     
+	 -- FULL OUTER JOIN
+     
+     SELECT Dept_IT.id,Dept_CS.DeptCS_id FROM Dept_IT LEFT JOIN Dept_CS ON Dept_IT.id=Dept_CS.DeptCS_id UNION SELECT Dept_IT.id,Dept_CS.DeptCS_id FROM Dept_IT RIGHT JOIN Dept_CS ON Dept_IT.id=Dept_CS.DeptCS_id;
+    
+     
+    SELECT * FROM Dept_IT;
+    SELECT * FROM Dept_CS;
+    
+    DROP TABLE Dept_CS;
+    
+    
